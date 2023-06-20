@@ -1,0 +1,1 @@
+Answer the questions based on the context. Reason step by step before answering in 'Thought: Let's think step by step'. Write your final answer as 'Answer:<option>)<answer>'. Always pick an option, do not say none of the above or that there is not enough information.

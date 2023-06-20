@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Expert Evaluate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+  </head>
+  <body>
+    <div class="ui container">
+        <h1>Evaluate Stories</h1>
+        <div class="ui form">
+            <div class="ui placeholder segment">
+                <div class="ui two column stackable grid">
+                  <div class="column">
+                <div class="field">
+                    <label for="evaluator">Name of evaluator:</label>
+                    <input type="text" id="evaluator" name="evaluator">
+                </div>
+                    <button type="button" id="load_story_btn" class="ui float button">Load Story</button>
+                  </div>
+                  <div class="column">
+                    <p>ID: <span id="row"></span></p>
+                    <p>Number of stories Rated: <span id="num_stories"></span></p>
+            </div>
+            </div>
+            </div>  
+                  <div class="ui placeholder segment" id="story_content">
+                    Context:
+                    <p id="context"></p>
+                    Perception:
+                    <p id="perception"></p>
+                    Action:
+                    <p id="action"></p>
+                    Belief Question:
+                    <p id="belief_question"></p>
+                    Desire Question:
+                    <p id="desire_question"></p>
+                    Action Question:
+                    <p id="action_question"></p>
+                    Belief Answer:
+                    <p id="belief_answer"></p>
+                    Desire Answer:
+                    <p id="desire_answer"></p>
+                    Action Answer:
+                    <p id="action_answer"></p>
+                    Distractor:
+                    <p id="distractor"></p>
+                    Distractor Perception:
+                    <p id="distractor_percept"></p>
+                </div>
+                <div class="inline fields">
+                    <div class="field">
+                        <label for="alt_desire">Alternate Desire:</label>
+                        <input type="text" id="alt_desire" name="alt_desire">
+                    </div>
+                    <div class="field">
+                        <label for="action_aware">Action Aware:</label>
+                        <input type="text" id="action_aware" name="action_aware">
+                    </div>
+                    <div class="field">
+                        <label for="action_not_aware">Action Not Aware:</label>
+                        <input type="text" id="action_not_aware" name="action_not_aware">
+                    </div>
+                    </div>
+                    <div class="field">
+                        <label>Does the story follow the assigned structure?</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="story_structure" tabindex="0" value="yes" checked>
+                            <label>Yes</label>
+                        </div>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="story_structure" tabindex="1" value="no">
+                            <label>No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <label>Do the stories test the desired behavior?</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="behavior_evaluation" value="1">
+                            <label>1 (Disagree)</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="behavior_evaluation" value="2">
+                            <label>2 (Slightly Disagree)</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="behavior_evaluation" value="3" checked>
+                            <label>3 (Neutral)</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="behavior_evaluation" value="4">
+                            <label>4 (Slightly Agree)</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="behavior_evaluation" value="5">
+                            <label>5 (Agree)</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <button type="button" id="store_btn" class="ui fluid primary button">Submit</button>
+
+    </div>
+<script>
+// Load context button
+$('#load_story_btn').click(function() {
+        $.ajax({
+        type: "POST",
+        url: "/load_story",
+        data: {
+            'evaluator': $('#evaluator').val(),
+        },
+        success: function(data) {
+            // fill all the story, question, answer fields
+            $('#context').text(data.context);
+            $('#perception').text(data.perception);
+            $('#action').text(data.action);
+            $('#belief_question').text(data.belief_question);
+            $('#desire_question').text(data.desire_question);
+            $('#action_question').text(data.action_question);
+            $('#belief_answer').text(data.belief_answer);
+            $('#desire_answer').text(data.desire_answer);
+            $('#action_answer').text(data.action_answer);
+            $('#distractor').text(data.distractor);
+            $('#distractor_percept').text(data.distractor_percept);
+            $('#alt_desire').val(data.alt_desire);
+            $('#num_stories').text(data.num_stories);
+            $('#row').text(data.row);
+            $('#action_aware').val(data.action.split(';')[0]);
+            $('#action_not_aware').val(data.action.split(';')[1]);
+        },
+        error: function() {
+            alert("Error loadging data.");
+        }
+        });
+    });
+
+// Store button
+$('#store_btn').click(function() {
+        $.ajax({
+        type: "POST",
+        url: "/store",
+        data: {
+            // pass evaluator name and raitings
+            'evaluator': $('#evaluator').val(),
+            'row': $('#row').text(), 
+            'alt_desire': $('#alt_desire').val(),
+            'action_aware': $('#action_aware').val(),
+            'action_not_aware': $('#action_not_aware').val(),
+            'story_structure': $('input[name=story_structure]:checked').val(),
+            'behavior_evaluation': $('input[name=behavior_evaluation]:checked').val(),
+            // pass the story data
+            'context': $('#context').text(),
+            'perception': $('#perception').text(),
+            'action': $('#action').text(),
+            'belief_question': $('#belief_question').text(),
+            'desire_question': $('#desire_question').text(),
+            'action_question': $('#action_question').text(),
+            'belief_answer': $('#belief_answer').text(),
+            'desire_answer': $('#desire_answer').text(),
+            'action_answer': $('#action_answer').text(),
+            'distractor': $('#distractor').text(),
+            'distractor_percept': $('#distractor_percept').text(),
+        },
+        success: function(data) {
+            $('#context').text(data.context);
+            $('#perception').text(data.perception);
+            $('#action').text(data.action);
+            $('#belief_question').text(data.belief_question);
+            $('#desire_question').text(data.desire_question);
+            $('#action_question').text(data.action_question);
+            $('#belief_answer').text(data.belief_answer);
+            $('#desire_answer').text(data.desire_answer);
+            $('#action_answer').text(data.action_answer);
+            $('#distractor').text(data.distractor);
+            $('#distractor_percept').text(data.distractor_percept);
+            $('#alt_desire').val(data.alt_desire);
+            $('#action_aware').val(data.action_aware);
+            $('#action_not_aware').val(data.action_not_aware);
+            $('#num_stories').text(data.num_stories);
+            $('#row').text(data.row);
+            $('#action_aware').val(data.action.split(';')[0]);
+            $('#action_not_aware').val(data.action.split(';')[1]);
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        },
+        error: function() {
+            alert("Error storing.");
+        }
+        });
+    });
+</script>
+</body>
+</html>

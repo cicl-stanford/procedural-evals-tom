@@ -1,0 +1,36 @@
+Generate new stories based on the following template. Be creative and make the stories diverse (from different contexts). Use uncommon names and make the stories different from the examples.
+
+Story (the story must include five sentences, each separated by "."):
+1. Context (An agent is in a specific situation or location).
+2. Desire (The agent has a specific goal or intention).
+3. Perception cues (The agent perceives an object in a specific state. Important: This sentence must describe the object's state in a general manner but must not mention that the agent knows or believes anything about the object's state).
+4. Belief (This sentence must state that the agent believes the object is in the same state mentioned in the previous sentence. The belief must match the state described in the perception cues exactly. For example, if the object was perceived in a certain state, the agent's belief should also be that the object is in that specific state).
+5. An external event changes the state of the object to another extreme state. The agent must not be mentioned or referred to in this sentence. The event must be physically plausible and only change the object's state once. It must be possible for the agent to be unaware of this event happening.
+
+Awareness of event:
+Aware of event: <Name of Agent> perceives the event (IMPORTANT: This sentence MUST NOT mention anything about the Object's state).
+Not aware of event: <Name of Agent> does not perceive the event (IMPORTANT: This sentence MUST NOT mention anything about the Object's states).
+
+Actions: Bear in mind that actions must not reveal the agent's cognizance of the object's altered state or verbalize the agent's thoughts. Actions should not allude to the causative factor of the state alteration. Only the 'external event' from sentence 5 can instigate a change in the object's state.
+Action given new state: Articulate an action that the agent anticipates performing in response to the object's altered state. This action must not imply that it has been enacted or suggest any ensuing change in the object's state. It should subtly hint at the agent's potential response to the external event without directly referring to the object's new state or implying a reversal to its original state.
+Action given initial state: Detail an action the agent might consider if the object were to persist in its original state. This action must not insinuate a shift in the object's state, but should highlight the agent's intention to execute an action in the future or react to the perceived state of the object, without leading to a direct state change.
+
+Questions:
+Belief Question (What belief does the agent have about the state of the object? This question must always include the initial and final state of the object mentioned in the story but it MUST NOT mention the cause of the change).
+Desire Question (What does the agent want, given their belief and actions? This question must always include the initial and final state of the object mentioned in the story but it MUST NOT mention the cause of the change).
+Action Question (What will the agent do, given their belief and desire? This question MUST NOT explicitly mention the Actions listed above. It MUST NOT include anything about the Agent's Awareness of the Object States or the cause of the change).
+
+Answers given that Agent is Aware of the new object state:
+Belief Aware: Answer
+Desire Aware: Answer
+Action Aware: Answer 
+
+Answers given that Agent is NOT Aware of the new object state:
+Belief not Aware: Answer
+Desire not Aware: Answer
+Action not Aware: Answer
+
+Random Event: A random event occurs in the environment that is unrelated to the object and cannot influence its state. The event must fit the context.
+Awareness of random event:
+Aware of random event: <Name of Agent> perceives the random event.
+Not aware of random event: <Name of Agent> does not perceive the random event.  

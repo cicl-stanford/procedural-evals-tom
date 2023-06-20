@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey on Prolific</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <script src="https://proliferate.alps.science/static/js/proliferate.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div id="content">
+            <!-- Introduction and example -->
+            <!-- Introduction and example -->
+            <div id="consent" class="page">
+                <h2>Consent Form</h2>
+                <p><strong>Description</strong></p>
+                <p>Welcome! You are invited to participate in a research study. You will be asked to rate the quality of various short scenarios. All information collected will remain confidential.</p>
+                <p><strong>Risks and benefits:</strong></p>
+                <p>Risks involved in this study are the same as those normally associated with using a computer (e.g., mild eye/arm strain). If you have any pre-existing conditions that might make reading and completing a computer-based survey strenuous for you, you should probably elect to not participate in this study. If at any time during the study you feel unable to participate because you are experiencing strain, you may end your participation without penalty. We cannot and do not guarantee or promise that you will receive any benefits from this study. Your decision whether or not to participate in this study will not affect your employment, medical care, and/or grades in school.</p>
+                <p><strong>Time involvement:</strong></p>
+                <p>Your participation in this experiment will take around 20 minutes.</p>
+                <p><strong>Payment:</strong></p>
+                <p>If recruitment materials indicate payment (e.g., Prolific or other recruitment), you will receive compensation as indicated.</p>
+                <p><strong>Subject's rights:</strong></p>
+                <p>If you have read this notice and have decided to participate in this project, please understand your participation is voluntary and you have the right to withdraw your consent or discontinue participation at any time without penalty or loss of benefits to which you are otherwise entitled. You have the right to refuse to answer particular questions. Your individual privacy will be maintained in all published and written data resulting from the study.</p>
+                <p><strong>Contact information:</strong></p>
+                <p>If you have any questions, concerns or complaints about this research study, its procedures, or risks and benefits, you should ask the Protocol Director, (Professor Tobias Gerstenberg, Phone: (650) 725-2431; Email: gerstenberg@stanford.edu).</p>
+                <p><strong>Independent contact:</strong></p>
+                <p>If you are not satisfied with how this study is being conducted, or if you have any concerns, complaints, or general questions about the research or your rights as a participant, please contact the Stanford Institutional Review Board (IRB) to speak to someone independent of the research team via email at irb2-manager@lists.stanford.edu, or via phone at (650) 723-2480 or toll free at 1-866-680-2906. You can also write to the Stanford IRB, Stanford University, 3000 El Camino Real, Five Palo Alto Square, 4th Floor, Palo Alto, CA 94306.</p>
+                <p>You may want to print a copy of this consent form to keep. By clicking the button below, you acknowledge that you have read the above information, that you are 18 years of age, or older and give your consent to participate in our internet-based study and consent for us to analyze the resulting data.</p>
+         <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="consent-checkbox">
+                    <label class="form-check-label" for="consent-checkbox">
+                        I have read and understood the information above, and I agree to participate in this study.
+                    </label>
+                </div>
+            </div>
+            <div id="intro0" class="page d-none">
+                <h2>Instructions</h2>
+                <p>Please read these instructions carefully, as understanding them is important for successfully completing the study. After reading the instructions, you will need to complete a comprehension quiz to confirm that you understood the task.</p>
+                <!-- Add your introduction content and example here -->
+            </div>
+            <div id="intro1" class="page d-none">
+                <h2>Instructions</h2>
+                <p>In this online experiment, your task is to evaluate the quality of different short social reasoning scenarios. Each scenario consists of a story, a question, and different answer options. We are interested in whether the story is easy to understand and whether the question and answers make sense with respect to the story. We also want to know whether the 'correct' answer to the question is unclear or ambiguous.</p>
+            </div>
+            <div id="intro2" class="page d-none">
+                <h3>An example scenario can look like this:</h3>
+                    <h4>Story</h4>
+                    Noor is working as a barista at a busy coffee shop. Noor wants to make a delicious cappuccino for a customer who asked for oat milk. Noor grabs a milk pitcher and fills it with oat milk. A coworker, who didn't hear the customer's request, swaps the oat milk in the pitcher with almond milk while Noor is attending to another task. Noor sees her coworker swapping the milk.
+                    <h4>Question</h4>
+                    Does Noor believe the milk pitcher contains oat milk or almond milk?
+                    <h4>Answer Options</h4>
+                    <ol>
+                    <li>Almond Milk
+                    <li>Oat Milk (Correct)
+                    </ol>
+                    <h4> Answer the following questions </h4>
+                    <p>Question 1: The story is easy to understand.</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-1" value="1">
+                        <label class="form-check-label" for="likert-${i}-${q}-1">Strongly Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-2" value="2">
+                        <label class="form-check-label" for="likert-${i}-${q}-2">Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-3" value="3">
+                        <label class="form-check-label" for="likert-${i}-${q}-3">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-4" value="4">
+                        <label class="form-check-label" for="likert-${i}-${q}-4">Agree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-5" value="5">
+                        <label class="form-check-label" for="likert-${i}-${q}-5">Strongly Agree</label>
+                    </div>
+                    <p>Question 2: The question and answer options are relevant and clear in relation to the story.</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-1" value="1">
+                        <label class="form-check-label" for="likert-${i}-${q}-1">Strongly Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-2" value="2">
+                        <label class="form-check-label" for="likert-${i}-${q}-2">Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-3" value="3">
+                        <label class="form-check-label" for="likert-${i}-${q}-3">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-4" value="4">
+                        <label class="form-check-label" for="likert-${i}-${q}-4">Agree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-5" value="5">
+                        <label class="form-check-label" for="likert-${i}-${q}-5">Strongly Agree</label>
+                    </div>
+                    <p>Question 3: The 'correct' answer to the question is clear and unambiguous.</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-1" value="1">
+                        <label class="form-check-label" for="likert-${i}-${q}-1">Strongly Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-2" value="2">
+                        <label class="form-check-label" for="likert-${i}-${q}-2">Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-3" value="3">
+                        <label class="form-check-label" for="likert-${i}-${q}-3">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-4" value="4">
+                        <label class="form-check-label" for="likert-${i}-${q}-4">Agree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-5" value="5">
+                        <label class="form-check-label" for="likert-${i}-${q}-5">Strongly Agree</label>
+                    </div>
+            </div>
+            <div id="intro3" class="page d-none">
+                <h3>Another example of a short story can look like this:<h3>
+                    <h4>Story</h4>
+                    Tracy didn't go home that evening and resisted Riley's advances.
+                    <h4>Question</h4>
+                    What does Tracy need to do before this?
+                    <h4>Answer Options</h4>
+                    <ol>
+                    <li>Make a new plan (correct)
+                    <li>Go home and see Riley
+                    <li>Find somewhere to go
+                    </ol>
+                    <h4> Answer the following questions </h4>
+                    <p>Question 1: The story is easy to understand.</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-1" value="1">
+                        <label class="form-check-label" for="likert-${i}-${q}-1">Strongly Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-2" value="2">
+                        <label class="form-check-label" for="likert-${i}-${q}-2">Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-3" value="3">
+                        <label class="form-check-label" for="likert-${i}-${q}-3">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-4" value="4">
+                        <label class="form-check-label" for="likert-${i}-${q}-4">Agree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-5" value="5">
+                        <label class="form-check-label" for="likert-${i}-${q}-5">Strongly Agree</label>
+                    </div>
+                    <p>Question 2: The question and answer options are relevant and clear in relation to the story.</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-1" value="1">
+                        <label class="form-check-label" for="likert-${i}-${q}-1">Strongly Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-2" value="2">
+                        <label class="form-check-label" for="likert-${i}-${q}-2">Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-3" value="3">
+                        <label class="form-check-label" for="likert-${i}-${q}-3">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-4" value="4">
+                        <label class="form-check-label" for="likert-${i}-${q}-4">Agree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-5" value="5">
+                        <label class="form-check-label" for="likert-${i}-${q}-5">Strongly Agree</label>
+                    </div>
+                    <p>Question 3: The 'correct' answer to the question is clear and unambiguous.</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-1" value="1">
+                        <label class="form-check-label" for="likert-${i}-${q}-1">Strongly Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-2" value="2">
+                        <label class="form-check-label" for="likert-${i}-${q}-2">Disagree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-3" value="3">
+                        <label class="form-check-label" for="likert-${i}-${q}-3">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-4" value="4">
+                        <label class="form-check-label" for="likert-${i}-${q}-4">Agree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="likert-${i}-${q}" id="likert-${i}-${q}-5" value="5">
+                        <label class="form-check-label" for="likert-${i}-${q}-5">Strongly Agree</label>
+                    </div>
+            </div>
+            <div id="intro4" class="page d-none">
+                <h2>Instructions</h2>
+                <p>In total, you will evaluate 30 scenarios. It is important to read each of them carefully and respond to the best of your ability.</p>
+                <!-- Add your introduction content and example here -->
+            </div>
+            <!-- Comprehension test -->
+            <div id="comprehension-test" class="page d-none">
+                <h2>Comprehension Quiz</h2>
+                <form>
+                    <div class="question">
+                        <p>1. Your task in this online experiment is to evaluate the quality of different short social reasoning scenarios based on the understandability of the story and whether the question and answer options make sense with respect to the story.</p>
+                        <div>
+                            <input type="radio" id="comp-1-true" name="comprehension-1" value="true">
+                            <label for="comp-1-true">True</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="comp-1-false" name="comprehension-1" value="false">
+                            <label for="comp-1-false">False</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>2. The scale for rating the understandability of a story and whether the question and answer options make sense has four response options: Disagree, Slightly Agree, Agree, and Strongly Agree.</p>
+                        <div>
+                            <input type="radio" id="comp-2-true" name="comprehension-2" value="true">
+                            <label for="comp-2-true">True</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="comp-2-false" name="comprehension-2" value="false">
+                            <label for="comp-2-false">False</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>3. Each short social reasoning scenario consists of a story, a question, and different answer options.</p>
+                        <div>
+                            <input type="radio" id="comp-3-true" name="comprehension-3" value="true">
+                            <label for="comp-3-true">True</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="comp-3-false" name="comprehension-3" value="false">
+                            <label for="comp-3-false">False</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>4. The study focuses on testing someone's social reasoning abilities using short mathematical reasoning scenarios.</p>
+                        <div>
+                            <input type="radio" id="comp-4-true" name="comprehension-4" value="true">
+                            <label for="comp-4-true">True</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="comp-4-false" name="comprehension-4" value="false">
+                            <label for="comp-4-false">False</label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>5. All scenarios in this study involve a short story followed by a question with two multiple-choice response options for you to select from.</p>
+                        <div>
+                            <input type="radio" id="comp-5-true" name="comprehension-5" value="true">
+                            <label for="comp-5-true">True</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="comp-5-false" name="comprehension-5" value="false">
+                            <label for="comp-5-false">False</label>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <!-- Trial pages -->
+            <div id="trial-pages">
+            </div>
+            <!-- Exit survey -->
+            <div id="exit-survey" class="page d-none">
+                <h2>Exit Survey</h2>
+                <p>Please provide demographic information before you complete the survey.</p>
+                <form id="demographic-form">
+                    <label for="age">Age:</label><br>
+                    <input type="number" id="age" name="age" min="18" max="120"><br>
+                    <label for="gender">Gender:</label><br>
+                    <select id="gender" name="gender">
+                        <option value="" disabled selected>None</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="non-binary">Non-Binary</option>
+                        <option value="other">Other</option>
+                        <option value="prefer not to say">Prefer not to say</option>
+                    </select><br>
+                    <label for="race">Race:</label><br>
+                    <select id="race" name="race">
+                        <option value="" disabled selected>None</option>
+                        <option value="white">White</option>
+                        <option value="black">Black/African American</option>
+                        <option value="american_indian">American Indian/Alaska Native</option>
+                        <option value="asian">Asian</option>
+                        <option value="native_hawaiian">Native Hawaiian/Pacific Islander</option>
+                        <option value="multiracial">Multiracial/Mixed</option>
+                        <option value="other">Other</option>
+                    </select><br>
+                    <label for="ethnicity">Ethnicity:</label><br>
+                    <select id="ethnicity" name="ethnicity">
+                    <option value="" disabled selected>None</option>
+                    <option value="hispanic">Hispanic</option>
+                    <option value="non_hispanic">Non-Hispanic</option>
+                    </select><br>
+                </form>
+                <p>Please press submit to finish the survey.</p>
+                <button id="submit-btn" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button id="prev-btn" class="btn btn-secondary d-none">Previous</button>
+            <button id="next-btn" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

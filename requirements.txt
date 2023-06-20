@@ -1,0 +1,7 @@
+langchain
+crfm-helm
+scipy
+seaborn
+matplotlib
+pandas
+pydantic

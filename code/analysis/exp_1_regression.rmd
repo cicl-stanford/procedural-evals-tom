@@ -1,0 +1,29 @@
+```{r}
+library("emmeans")     # for linear contrasts
+library("tidybayes")   # tidying up results from Bayesian models
+library("brms")        # Bayesian regression models with Stan
+library("tidyverse")   # for wrangling, plotting, etc. 
+
+```
+
+```{r}
+df.exp_1 = read_csv("../../data/prolific/exp_1/main_01_long.csv") 
+df.exp_1$survey_type <- factor(df.exp_1$survey_type, levels = c("ours", "social_iqa", "expert")) # same order as things appear in fig_2 in paper
+head(df.exp_1)
+```
+
+```{r}
+fit.brm_exp_1= brm(formula = average_rating ~ 1 + survey_type + (1 | worker_id) + (1 | item_id),
+                      data = df.exp_1,
+                      seed = 1)
+```
+```{r}
+fit.brm_exp_1 %>% 
+  summary()
+```
+```{r}
+fit.brm_exp_1 %>% 
+  emmeans(specs = pairwise ~ survey_type,
+          type = "response")
+```
+
