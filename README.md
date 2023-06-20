@@ -9,7 +9,7 @@ A Domain-Agnostic Method for Procedurally Generating LLM Evaluations
 We have developed a method that uses large language models (LLMs) to procedurally generate evaluations for other LLMs. We initially applied this method to assess the performance of LLMs in a subdomain of social reasoning (Theory-of-Mind). Please checkout our [paper](https://sites.google.com/view/social-reasoning-lms) for further details.
 
 
-### 📂 Repro structure
+### 📂 Repo structure
 ```
 ├── code                 
 │   └── analysis
@@ -37,3 +37,18 @@ We have developed a method that uses large language models (LLMs) to procedurall
 5. `conda create --name name-of-my-env python==3.10`
 6. `conda activate name-of-my-env`
 7. `pip install -r requirements.txt` 
+
+#### Generating BigToM
+Prompt for generating BigToM is in `code/prompt_instructions/bigtom.txt` and the python script is at `code/src/bigtom.py`. To generate BigToM, run the following commands:
+1. `cd code/src`
+2. `python bigtom.py`
+3. `python generate_conditions.py`
+
+#### Human Experiments
+We provide code to run Human experiments of 3 kinds:
+1. Expert Ratings: `code/src/expert_evaluate.py`
+2. Prolific Experiment for Rating Generated Stories: `code/prolific-exp-1`
+3. Prolific Experiment for Testing Human Participants: `code/prolific-exp-2`
+
+#### Evaluating Models
+We provide code to evaluate models on BigToM in `code/src/evaluate_conditions.py`. More specific experiment scripts are available in `code/scripts`.
