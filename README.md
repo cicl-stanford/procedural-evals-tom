@@ -6,7 +6,8 @@ A Domain-Agnostic Method for Procedurally Generating LLM Evaluations
 
 
 ### 🧐 What is this?
-We have developed a method that uses large language models (LLMs) to procedurally generate evaluations for other LLMs. We initially applied this method to assess the performance of LLMs in a subdomain of social reasoning (Theory-of-Mind). Please checkout our [paper](https://sites.google.com/view/social-reasoning-lms) for further details.
+This is a supporting repository for our paper titled "Understanding Social Reasoning in LLMs with LLMs".
+We develop a method that uses large language models (LLMs) to procedurally generate evaluations for other LLMs. We apply this method to assess the performance of LLMs in a subdomain of social reasoning (Theory-of-Mind). Please checkout our [paper](https://sites.google.com/view/social-reasoning-lms) for further details.
 
 
 ### 📂 Repo structure
