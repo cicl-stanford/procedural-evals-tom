@@ -34,7 +34,7 @@ We develop a method that uses large language models (LLMs) to procedurally gener
 1. `curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh`
 2. `bash Miniconda3-latest-MacOSX-x86_64.sh`
 3. close and reopen terminal
-4. `source ~/.bashrc`
+4. `source ~/.bashrc` or `source ~/.zshrc`
 5. `conda create --name name-of-my-env python==3.10`
 6. `conda activate name-of-my-env`
 7. `pip install -r requirements.txt` 
