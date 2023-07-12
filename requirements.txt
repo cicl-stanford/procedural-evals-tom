@@ -1,4 +1,4 @@
-langchain
+langchain==0.0.146
 crfm-helm
 scipy
 seaborn
