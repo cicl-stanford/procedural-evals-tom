@@ -17,7 +17,7 @@ def get_completions():
 def generate_conditions(completions):
     list_var = ["Story", "Aware of event", "Not Aware of event", "Action aware", "Action not aware", "Belief Question", "Desire Question", "Action Question",
                 "Belief Answer Aware", "Desire Answer Aware", "Action Answer Aware", "Belief Answer not Aware",
-                "Desire Answer not Aware", "Action Answer not Aware", "Alternate Desire", "Random Event", "Aware of random event", "Not aware of random event"]
+                "Desire Answer not Aware", "Action Answer not Aware", "Random Event", "Aware of random event", "Not aware of random event"]
 
     for completion_idx, completion in enumerate(completions):
 
