@@ -3,7 +3,7 @@ import csv
 
 DATA_DIR = '../../data'
 CONDITION_DIR = os.path.join(DATA_DIR, 'conditions')
-CSV_NAME = os.path.join(DATA_DIR, 'chat/story_v5.csv')
+CSV_NAME = os.path.join(DATA_DIR, 'bigtom/bigtom.csv')
 INITIAL_BELIEF = [0, 1] # 0 hide initial belief, 1 show initial belief
 VARIABLES = ['forward_belief', 'forward_action', 'backward_belief', 'percept_to_belief']
 CONDITIONS = ['true_belief', 'false_belief', 'true_control', 'false_control']
