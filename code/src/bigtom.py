@@ -95,11 +95,12 @@ Not aware of random event: {not_aware_of_random_event}"""
                 examples.append(example)
         random.shuffle(examples)
 
-        # 2-shots by default
-        messages = [system_message, human_message_0]
+        # 3-shots by default
+        messages = [system_message]
         for i in range(args.num_shots):
+            messages.append(human_message_0)
             messages.append(AIMessage(content=response_template.format(**examples[i])))
-            messages.append(human_message_1)
+        messages.append(human_message_1)
 
         if args.verbose:
             print(f"------ messages ------")
